@@ -1,0 +1,30 @@
+{# empty Twig template #}
+{%include 'menu.html.twig' %}
+<link rel="stylesheet" href="css/style.css">
+<!--Font Awesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<section class="form-register">
+<div class="example-wrapper">
+    <h1 style="text-align: center;color:green"> Lista {{ controller_name }} <i class="fa-solid fa-screwdriver-wrench"></i></h1>
+    <br> 
+    Estado <i class="fa-solid fa-square" style="color:yellow;"></i> Iniciada <i class="fa-solid fa-square" style="color:red"></i> En proceso <i class="fa-solid fa-square" style="color: green;"></i> Resuelto
+
+{% for incidencia in todosLasIncidencias %}
+    <div class="controls">
+        <div>
+            <div {% if incidencia.estado == "Iniciada" %}style="color:yellow"{% endif %}{% if incidencia.estado == "En proceso" %}style="color:red"{% endif %} {% if incidencia.estado == "Resuelta" %}style="color:green"{% endif %}>
+                <i class="fa-solid fa-gear"></i> Incidencia: <a href="{{ path("ver_incidencia",{id:incidencia.id}) }}">{{ incidencia.titulo }}</a><br>
+                <i class="fa-solid fa-calendar-days"></i> Fecha:{{ incidencia.fechaCreacion | date("Y-m-d H:i:s")}}
+            </div>
+        </div>
+        <br>
+        <i class="fa-solid fa-user"></i> Cliente: {{ incidencia.cliente.nombre }}{{ incidencia.cliente.apellidos }}<br>
+        
+    </div>
+{%  endfor %}
+
+<p><a href="{{ path("insertar_incidencia4") }}"><i class="fa-solid fa-plus" style="color: green" ></i> Nueva Incidencia</a></p>
+</section>

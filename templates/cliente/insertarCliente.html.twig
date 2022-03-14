@@ -1,0 +1,14 @@
+{# empty Twig template #}
+{%include 'menu.html.twig' %}
+<link rel="stylesheet" href="/css/style.css">
+<section class="form-register">
+    <h2>Añadir Cliente</h2>
+    <br>
+    <form action="{{ path("insertar_cliente")}}" method="post">
+        <input type="text" class="controls" name="nombre" placeholder="Ingrese Nombre..."><br>
+        <input type="text" class="controls" name="apellidos" placeholder="Ingrese Apellidos..."><br>
+        <input type="text" class="controls" name="telefono" placeholder="Ingrese Telefono..."><br>
+        <input type="text" class="controls" name="direccion" placeholder="Ingrese Dirreción..."><br>
+        <input type="submit" class="botons" value="Insertar Cliente">
+    </form>
+</section>

@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/css/cssMenu.css">
+<ul class="menu">
+    <li><a href="{{ path("inicio") }}">Inicio</a></li>
+    <li><a href="{{ path("app_incidencia") }}">Incidencias</a></li>
+    <li><a href="{{ path("app_cliente") }}">Clientes</a></li>
+    <a href="{{ path("logout") }}"><img src="/uploads/iconoCerrar.png" id="datos_usuario" width="60px" height="60px"></a>
+    <div class="nombreUsu" ><p>Usuario: {{ app.user.email }}</p>
+                <p>Nombre:{{ app.user.apellidos }},{{ app.user.nombre }}</p>
+    </div>
+    <div id="usuario">
+        <div id="foto_usuario" style="background-image:url(/uploads/imagenes/{{ app.user.imagen }})"></div>
+    </div>
+</ul>

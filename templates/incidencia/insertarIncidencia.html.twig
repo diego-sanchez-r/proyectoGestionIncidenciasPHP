@@ -1,0 +1,19 @@
+{# empty Twig template #}
+{%include 'menu.html.twig' %}
+<link rel="stylesheet" href="/css/style.css">
+<section class="form-register">
+    <h1>Añadir Incidencia a: <br> {{ cliente.nombre }} {{ cliente.apellidos }}</h1>
+    <br>
+<form action="{{ path("insertar_incidencia",{id:cliente.id})}}" method="post">
+    <input type="text" name="titulo" placeholder="Ingrese el Titulo..." class="controls"><br>
+    Estado
+        <select name="estado" class="controls">
+        <option value="iniciada">Iniciada</option>
+        <option value="en proceso">En proceso</option>
+        <option value="resuelta">Resuelta</option>
+    </select><br>
+    <input type="text" hidden name="usuario" value="{{ app.user.id }}">
+    <input type="text" hidden name="cliente" value="{{ cliente.id }}">
+    <input type="submit" class="botons" value="Insertar Incidencia">
+</form>
+</section>    

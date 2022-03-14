@@ -1,0 +1,12 @@
+
+{%include 'menu.html.twig' %}
+<link rel="stylesheet" href="/css/style.css">
+<section class="form-register">
+    <h1>Datos Incidencia</h1>
+    <br>
+<div>Título: {{ incidenciaSeleccionada.titulo }}</div>
+<div>Fecha Creación: {{ incidenciaSeleccionada.fechaCreacion | date("Y-m-d") }}</div>
+<div>Estado: {{ incidenciaSeleccionada.estado }}</div>
+<div>Cliente: {{ incidenciaSeleccionada.cliente.nombre }} {{ incidenciaSeleccionada.cliente.apellidos }}</div>
+<div>Usuario: {{ incidenciaSeleccionada.usuario.nombre }} {{ incidenciaSeleccionada.usuario.apellidos }}</div>
+</section>

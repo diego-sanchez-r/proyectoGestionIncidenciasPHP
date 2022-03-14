@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 09-mar-2022, 12:50:34
+    Author     : Diego_Sanchez
+*/
+
+.alert {
+  padding: 20px;
+  background-color: #04AA6D;
+  color: white;
+  width: 30%;
+  float: right;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.alert2 {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  width: 30%;
+  float: right;
+}
+
+.closebtn2 {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn2:hover {
+  color: black;
+}

@@ -1,0 +1,182 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
+{
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private $id;
+
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private $email;
+
+    #[ORM\Column(type: 'json')]
+    private $roles = [];
+
+    #[ORM\Column(type: 'string')]
+    #[Assert\MinLength(4)]
+    private $password;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $nombre;
+    
+    #[ORM\Column(type: 'string', length: 255)]
+    private $apellidos;
+    
+    #[ORM\Column(type: 'string', length: 50)]
+    private $telefono;
+    
+    #[ORM\Column(type: 'string', length: 255)]
+    private $imagen;
+
+    #[ORM\OneToMany(targetEntity: Incidencias::class, mappedBy: 'usuario')]
+    private $incidencias;
+
+    public function __construct()
+    {
+        $this->incidencias = new ArrayCollection();
+    }
+     
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+    
+    public function getNombre() {
+        return $this->nombre;
+    }
+
+    public function getApellidos() {
+        return $this->apellidos;
+    }
+
+    public function getTelefono() {
+        return $this->telefono;
+    }
+
+    public function getImagen() {
+        return $this->imagen;
+    }
+
+    public function setNombre($nombre): void {
+        $this->nombre = $nombre;
+    }
+
+    public function setApellidos($apellidos): void {
+        $this->apellidos = $apellidos;
+    }
+
+    public function setTelefono($telefono): void {
+        $this->telefono = $telefono;
+    }
+
+    public function setImagen($imagen): void {
+        $this->imagen = $imagen;
+    }
+
+    
+        /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Incidencias>
+     */
+    public function getIncidencias(): Collection
+    {
+        return $this->incidencias;
+    }
+
+    public function addIncidencia(Incidencias $incidencia): self
+    {
+        if (!$this->incidencias->contains($incidencia)) {
+            $this->incidencias[] = $incidencia;
+            $incidencia->addUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIncidencia(Incidencias $incidencia): self
+    {
+        if ($this->incidencias->removeElement($incidencia)) {
+            $incidencia->removeUsuario($this);
+        }
+
+        return $this;
+    }
+}

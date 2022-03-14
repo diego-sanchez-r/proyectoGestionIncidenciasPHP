@@ -1,0 +1,26 @@
+{# empty Twig template #}
+{%include 'menu.html.twig' %}
+<link rel="stylesheet" href="/css/style.css">
+<!--Font Awesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<section class="form-register">
+    <h1>Datos Cliente</h1>
+    <div id="cliente" style="border:1px solid black; margin: 5px; padding: 5px">
+        <div>Nombre: {{ clienteSeleccionado.nombre }}</div>
+        <div>Apellidos: {{ clienteSeleccionado.apellidos }}</div>
+        <div>Teléfono: {{ clienteSeleccionado.telefono }}</div>
+        <div>Dirección: {{ clienteSeleccionado.direccion }}</div>
+    </div>
+<h2>Incidencias del Cliente</h2>
+<br>
+Estado <i class="fa-solid fa-square" style="color:yellow;"></i> Iniciada <i class="fa-solid fa-square" style="color:red"></i> En proceso <i class="fa-solid fa-square" style="color: green;"></i> Resuelto
+{% for incidencias in incidenciasCliente %}
+        <div class="controls"  {% if incidencias.estado == "Iniciada" %}style="color:yellow"{% endif %}{% if incidencias.estado == "En proceso" %}style="color:red"{% endif %} {% if incidencias.estado == "Resuelta" %}style="color:green"{% endif %}><i class="fa-solid fa-screwdriver-wrench"></i> Incidencia: <a href="{{ path("ver_incidencia",{id:incidencias.id}) }}">{{ incidencias.titulo }}</a>
+        <a href="{{ path("borrar_incidencia",{id:incidencias.id}) }}" class="botones"> <i class="fa-solid fa-trash" style="color:red;"> </i> </a>
+        <a href="{{ path("editar_incidencia2",{id:incidencias.id}) }}"class="botones2"> <i class="fa-solid fa-pen-to-square" style="color:yellow;"> </i> </a>
+        </div>
+{%  endfor %}
+<p><a href="{{ path("insertar_incidencia3",{id:clienteSeleccionado.id}) }}"><i class="fa-solid fa-plus" style="color: green" ></i> Nueva Incidencia</a></p>
+</section>

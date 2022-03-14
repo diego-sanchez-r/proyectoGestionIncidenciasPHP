@@ -1,0 +1,103 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 07-mar-2022, 12:24:11
+    Author     : Diego_Sanchez
+*/
+
+*{
+  margin: 0;  
+  font-family: serif;
+  line-height: 1;
+}
+
+#logo{
+    height: 70px;
+    border-radius: 20px;
+    float: left;
+    margin-right: 50px;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+.menu{
+    list-style: none;
+    padding: 0;
+    background: #092327;
+    height: 6rem;
+    width: 100%;
+    margin: auto;
+}
+.menu li a{
+        text-decoration: none;
+        color: white;
+        padding: 2.3rem;
+        display: block;
+}
+
+.menu li{
+        display: inline-block;
+        text-align: center;
+}
+
+.menu li a:hover{
+        background: rgba(132, 84, 6, 0.7);
+}
+
+#usuario{
+    float: right;
+    position: relative;
+    text-decoration: none;
+    color: white;
+}
+#login{
+    margin-top: 10px ;
+    width: 180px;
+    float: right;
+    margin-right: 30px;
+    position: relative;
+    text-decoration: none;
+    color: white;
+}
+#nombre{
+    margin-top: 10px ;
+    width: 150px;
+    float: right;
+    color: white;
+}
+#foto_usuario{
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+    box-shadow: 0px 0px 10px 0px #FF9934;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.nombreUsu{
+    height: 50px;
+    width: 210px;
+    float: right;
+    background-size: cover;
+    background-position: center;
+    margin: 5px;
+    color: white;
+    margin-top: 25px;
+}
+
+#datos_usuario{
+    height: 60px;
+    width: 60px;
+    float: right;
+    background-size: cover;
+    background-position: center;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.enlaceRegistro{
+    color: white;
+}
+
